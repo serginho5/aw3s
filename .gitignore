@@ -1,0 +1,19 @@
+# dependências e build
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# variáveis de ambiente (segredos ficam só na máquina e no provedor de deploy)
+.env
+.env*.local
+
+# logs
+dev.log
+npm-debug.log*
+
+# versão antiga (Next 14 + WordPress), mantida só localmente
+_backup-v1/
+aw3s-nextjs-src.tar.gz
+start-nextjs.bat

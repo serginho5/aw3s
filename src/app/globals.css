@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Tokens extraídos do Elementor (post-10, header 92, footer 296, popup 264). */
+@theme {
+  --color-brand-deep: #0700dd;
+  --color-brand-cyan: #00f2ff;
+  --color-cyan: #00dafc;
+  --color-purple: #6852ed;
+  --color-purple-dark: #4632da;
+  --color-navy: #252c73;
+  --color-footer: #1f2c82;
+  --color-ink: #3d4459;
+  --color-muted: #7a7a7a;
+  --color-sky: #6ec1e4;
+  --color-teal: #1fe0d3;
+  --color-coral: #ff7f50;
+  --color-amber: #cc7a1b;
+  --color-indigo: #4054b2;
+  --color-surface: #e8ebef;
+  --color-track: rgb(225 228 237 / 0.65);
+
+  --font-sans: var(--nf-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--nf-varela), var(--nf-montserrat), sans-serif;
+  --font-poppins: var(--nf-poppins), sans-serif;
+  --font-roboto: var(--nf-roboto), sans-serif;
+  --font-nunito: var(--nf-nunito), sans-serif;
+
+  --shadow-glow: 0 0 30px 0 rgb(53 56 240 / 0.5);
+  --shadow-glow-soft: 0 0 25px 0 rgb(53 56 240 / 0.35);
+  --shadow-card: 0 10px 40px -12px rgb(37 44 115 / 0.18);
+  --shadow-value: 0 6px 18px 0 rgb(0 0 0 / 0.37);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(130deg, var(--color-brand-deep) 0%, var(--color-brand-cyan) 89%);
+}
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1140px;
+  padding-inline: 1.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
