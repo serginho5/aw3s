@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Gera um servidor Node enxuto para a imagem Docker da VPS.
+  output: "standalone",
   // Mantém as URLs no mesmo formato do WordPress (/quem-somos/).
   trailingSlash: true,
   async redirects() {

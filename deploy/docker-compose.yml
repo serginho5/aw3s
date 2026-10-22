@@ -1,0 +1,25 @@
+services:
+  web:
+    build:
+      context: ./app
+      args:
+        NEXT_PUBLIC_SITE_URL: https://aw3s.com.br
+    restart: unless-stopped
+    # SMTP do formulário de contato (criado uma vez no servidor, a partir do .env.example)
+    env_file: .env
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.aw3s.loadbalancer.server.port=3000
+      # URL temporária da VPS: continua com HTTPS mesmo se o certificado do domínio falhar
+      - traefik.http.routers.aw3s-temp.entrypoints=websecure
+      - traefik.http.routers.aw3s-temp.rule=Host(`aw3s.srv1899434.hstgr.cloud`)
+      - traefik.http.routers.aw3s-temp.tls.certresolver=letsencrypt
+      - traefik.http.routers.aw3s-temp.service=aw3s
+      - traefik.http.routers.aw3s.entrypoints=websecure
+      - traefik.http.routers.aw3s.rule=Host(`aw3s.com.br`) || Host(`www.aw3s.com.br`)
+      - traefik.http.routers.aw3s.tls.certresolver=letsencrypt
+      - traefik.http.routers.aw3s.service=aw3s
+      - traefik.http.routers.aw3s.middlewares=aw3s-www
+      - traefik.http.middlewares.aw3s-www.redirectregex.regex=^https://www\.aw3s\.com\.br/(.*)
+      - traefik.http.middlewares.aw3s-www.redirectregex.replacement=https://aw3s.com.br/$${1}
+      - traefik.http.middlewares.aw3s-www.redirectregex.permanent=true

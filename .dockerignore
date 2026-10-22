@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env
+.env*.local
+dev.log
+*.tsbuildinfo
+_backup-v1
+aw3s-nextjs-src.tar.gz
+start-nextjs.bat
+deploy
