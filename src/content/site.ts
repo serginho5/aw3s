@@ -3,7 +3,7 @@
 export const site = {
   name: "aw3s",
   email: "contato@aw3s.com.br",
-  whatsapp: "5511978370759",
+  whatsapp: "5511978370758",
   messenger: "111801600513365",
   social: {
     facebook: "https://www.facebook.com/Aw3s-111801600513365/",

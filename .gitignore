@@ -17,3 +17,6 @@ npm-debug.log*
 _backup-v1/
 aw3s-nextjs-src.tar.gz
 start-nextjs.bat
+
+# artes das redes sociais (cópia local para upload no Meta)
+_redes-upload/

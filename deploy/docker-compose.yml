@@ -16,10 +16,15 @@ services:
       - traefik.http.routers.aw3s-temp.tls.certresolver=letsencrypt
       - traefik.http.routers.aw3s-temp.service=aw3s
       - traefik.http.routers.aw3s.entrypoints=websecure
-      - traefik.http.routers.aw3s.rule=Host(`aw3s.com.br`) || Host(`www.aw3s.com.br`)
+      - traefik.http.routers.aw3s.rule=Host(`aw3s.com.br`)
       - traefik.http.routers.aw3s.tls.certresolver=letsencrypt
       - traefik.http.routers.aw3s.service=aw3s
-      - traefik.http.routers.aw3s.middlewares=aw3s-www
+      # www só redireciona para o domínio principal (certificado próprio)
+      - traefik.http.routers.aw3s-www.entrypoints=websecure
+      - traefik.http.routers.aw3s-www.rule=Host(`www.aw3s.com.br`)
+      - traefik.http.routers.aw3s-www.tls.certresolver=letsencrypt
+      - traefik.http.routers.aw3s-www.service=aw3s
+      - traefik.http.routers.aw3s-www.middlewares=aw3s-www
       - traefik.http.middlewares.aw3s-www.redirectregex.regex=^https://www\.aw3s\.com\.br/(.*)
       - traefik.http.middlewares.aw3s-www.redirectregex.replacement=https://aw3s.com.br/$${1}
       - traefik.http.middlewares.aw3s-www.redirectregex.permanent=true
